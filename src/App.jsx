@@ -14,10 +14,10 @@ function App() {
         outputColorSpace: THREE.SRGBColorSpace, //Output Encoding
       }}
       camera={{
-        fov: 45,
-        near: 0.1,
-        far: 200,
-        position: [3, 2, 6],
+        // fov: 75,
+        // near: 0.1,
+        // far: 200,
+        position: [0, 2, 9],
       }}
     >
       <Experience />
