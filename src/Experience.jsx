@@ -14,6 +14,8 @@ import {
   MeshReflectorMaterial,
 } from "@react-three/drei";
 import silkScreen from "/silkscreen-v1-latin-regular.woff?url";
+import { useControls } from "leva";
+import { Perf } from "r3f-perf";
 
 console.log(silkScreen);
 
@@ -41,8 +43,25 @@ export default function Experience() {
   const cube = useRef();
   const sphere = useRef();
 
+  const { position, color, visible } = useControls({
+    position: {
+      value: { x: 2, y: 0 },
+      min: 0,
+      max: 9,
+      step: 0.01,
+      joystick: "invertY",
+    },
+    color: "pink",
+    visible: true,
+  });
+
+  const { perfVisibility } = useControls({
+    perfVisibility: true,
+  });
+
   return (
     <>
+      {perfVisibility && <Perf position="top-left" visible={perfVisibility} />}
       {/* 
       Traditional way of using Orbit Controls
       <orbitControls args={[camera, gl.domElement]} /> */}
@@ -53,9 +72,9 @@ export default function Experience() {
       ></group> */}
       <ambientLight intensity={0.1} />
 
-      <mesh position-x={2} scale={1.2} ref={cube}>
+      <mesh position={[position.x, position.y, 0]} scale={1.2} ref={cube}>
         <boxGeometry />
-        <meshStandardMaterial color="pink" />
+        <meshStandardMaterial color={color} />
       </mesh>
 
       <PivotControls
@@ -66,7 +85,7 @@ export default function Experience() {
         scale={100}
         fixed={true}
       >
-        <mesh position-x={-2} ref={sphere}>
+        <mesh position-x={-2} ref={sphere} visible={visible}>
           <sphereGeometry args={[1.4, 32, 32]} />
           <meshStandardMaterial color="#ff0000" />
           <Html
