@@ -15,7 +15,7 @@
 .label > div {
   font-family: Helvetica, Arial;
   position: absolute;
-  background: #00000088;
+  /* background: #00000088; */
   color: white;
   padding: 15px;
   white-space: nowrap;
