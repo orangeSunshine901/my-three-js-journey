@@ -22,6 +22,7 @@ function App() {
           // far: 200,
           position: [0, 2, 9],
         }}
+        shadows
       >
         <Experience />
       </Canvas>

@@ -1,12 +1,5 @@
-// Need extends for traditional OrbitControls & useFrame for animation
-// import { useThree, extend, useFrame } from "@react-three/fiber";
-// Traditional way of using Orbit Controls
-// import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
-// import CustomObject from "./CustomObject";
 import { useRef } from "react";
 import {
-  PivotControls,
-  TransformControls,
   OrbitControls,
   Html,
   Text,
@@ -66,41 +59,53 @@ export default function Experience() {
       Traditional way of using Orbit Controls
       <orbitControls args={[camera, gl.domElement]} /> */}
       <OrbitControls enableDamping={true} makeDefault />
-      <directionalLight position={[1, 2, 3]} color="pink" intensity={1.9} />
+      <directionalLight
+        position={[1, 2, 3]}
+        color="pink"
+        intensity={1.9}
+        castShadow
+      />
       {/* <group
       // ref={plane}
       ></group> */}
       <ambientLight intensity={0.1} />
 
-      <mesh position={[position.x, position.y, 0]} scale={1.2} ref={cube}>
+      <mesh
+        position={[position.x, position.y, 0]}
+        scale={1.2}
+        ref={cube}
+        castShadow
+      >
         <boxGeometry />
         <meshStandardMaterial color={color} />
       </mesh>
 
-      <PivotControls
-        anchor={[0, 0, 0]}
-        depthTest={false}
-        lineWidth={2}
-        axisColors={["#000000"]}
-        scale={100}
-        fixed={true}
+      <mesh
+        position-x={-2}
+        position-y={0.4}
+        ref={sphere}
+        visible={visible}
+        castShadow
       >
-        <mesh position-x={-2} ref={sphere} visible={visible}>
-          <sphereGeometry args={[1.4, 32, 32]} />
-          <meshStandardMaterial color="#ff0000" />
-          <Html
-            position={[1, 1, 0]}
-            wrapperClass="label"
-            center
-            distanceFactor={6}
-            occlude={[sphere, cube]}
-          >
-            That's a sphere
-          </Html>
-        </mesh>
-      </PivotControls>
+        <sphereGeometry args={[1.4, 32, 32]} />
+        <meshStandardMaterial color="#ff0000" />
+        <Html
+          position={[1, 1, 0]}
+          wrapperClass="label"
+          center
+          distanceFactor={6}
+          occlude={[sphere, cube]}
+        >
+          That's a sphere
+        </Html>
+      </mesh>
 
-      <mesh position-y={-1} scale={10} rotation-x={-Math.PI * 0.5}>
+      <mesh
+        position-y={-1}
+        scale={10}
+        rotation-x={-Math.PI * 0.5}
+        receiveShadow
+      >
         <planeGeometry />
         {/* <meshStandardMaterial /> */}
         <MeshReflectorMaterial
@@ -111,20 +116,6 @@ export default function Experience() {
           mirror={0.75}
         />
       </mesh>
-      <TransformControls object={cube} mode="translate" />
-      {/* <CustomObject /> */}
-      <Float speed={2} floatIntensity={5}>
-        <Text
-          font={silkScreen}
-          fontSize={1}
-          position-y={4}
-          textAlign="center"
-          maxWidth={6}
-          color="lightblue"
-        >
-          I Love R3F
-        </Text>
-      </Float>
     </>
   );
 }
