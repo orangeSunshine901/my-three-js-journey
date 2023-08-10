@@ -13,7 +13,7 @@ function App() {
         dpr={[1, 2]} //Pixel Ratio an array can also be passed to limit the range like [1,2]
         gl={{
           // antialias: false
-          toneMapping: THREE.CineonToneMapping, //Tone Mapping default is ACESFilmicToneMapping
+          // toneMapping: THREE.ACESFilmicToneMapping, //Tone Mapping default is ACESFilmicToneMapping
           outputColorSpace: THREE.SRGBColorSpace, //Output Encoding
         }}
         camera={{
