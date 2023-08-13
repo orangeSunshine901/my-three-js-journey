@@ -73,3 +73,16 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+canvas {
+  touch-action: none;
+}
+
+.htmlScreen iframe {
+  width: 1420px;
+  height: 940px;
+  border: none;
+  overflow-x: hidden;
+  border-radius: 20px;
+  background: black;
+}
