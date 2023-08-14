@@ -56,7 +56,7 @@ export default function Experience() {
       </mesh>
       <Suspense fallback={<Placeholder position-y={0.5} scale={[2, 3, 2]} />}>
         {/* <Model /> */}
-        <Hamburger scale={0.35} />
+        {/* <Hamburger scale={0.35} /> */}
         <Fox />
       </Suspense>
     </>

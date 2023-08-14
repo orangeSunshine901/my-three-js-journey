@@ -27,6 +27,6 @@ export default function Fox() {
   // }, 2000);
 
   return (
-    <primitive object={fox.scene} scale={0.02} position-x={3} position-y={-1} />
+    <primitive object={fox.scene} scale={0.04} position-x={0} position-y={-1} />
   );
 }
