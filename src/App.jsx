@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Leva collapsed />
-      <Canvas>
+      <Canvas shadows>
         <Experience />
       </Canvas>
     </>
