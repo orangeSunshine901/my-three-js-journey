@@ -3,28 +3,34 @@ import "./App.css";
 import Experience from "./Experience";
 import * as THREE from "three";
 import { Leva } from "leva";
+import { KeyboardControls } from "@react-three/drei";
+import Interface from "./Interface";
 
 function App() {
   return (
     <>
-      <Leva collapsed />
-      <Canvas
-        // flat (Tone Mapping)
-        dpr={[1, 2]} //Pixel Ratio an array can also be passed to limit the range like [1,2]
-        gl={{
-          // antialias: false
-          toneMapping: THREE.CineonToneMapping, //Tone Mapping default is ACESFilmicToneMapping
-          outputColorSpace: THREE.SRGBColorSpace, //Output Encoding
-        }}
-        camera={{
-          // fov: 75,
-          // near: 0.1,
-          // far: 200,
-          position: [0, 2, 9],
-        }}
+      <KeyboardControls
+        map={[
+          { name: "forward", keys: ["ArrowUp", "KeyW"] },
+          { name: "rightward", keys: ["ArrowRight", "KeyD"] },
+          { name: "backward", keys: ["ArrowDown", "KeyS"] },
+          { name: "leftward", keys: ["ArrowLeft", "KeyA"] },
+          { name: "jump", keys: ["Space"] },
+        ]}
       >
-        <Experience />
-      </Canvas>
+        <Canvas
+          shadows
+          camera={{
+            fov: 45,
+            near: 0.1,
+            far: 200,
+            position: [2.5, 4, 6],
+          }}
+        >
+          <Experience />
+        </Canvas>
+        <Interface />
+      </KeyboardControls>
     </>
   );
 }
